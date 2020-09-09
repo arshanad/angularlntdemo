@@ -1,0 +1,55 @@
+<h1>Employee Table</h1>
+<p>Subjects:<span *ngFor="let s of Subjects">{{s+","}}</span></p>
+<span *ngIf="ShowFaculty">{{FacultyName}}</span>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Annual Salary</th>
+            <th>Date of Birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees">
+            <td> {{emp.code}}</td>
+            <td>{{emp.name | uppercase|gender_pipe:emp.gender}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{emp.annualSalary}}</td>
+            <td>{{emp.dateOfBirth | date:"fullDate"}}</td>
+        </tr>
+        <tr *ngIf="employees.length==0 || !employees">
+            <td colspan="5">No employees to display</td>
+        </tr>
+    </tbody>
+</table>
+<h1 >Display data using Interpolation From Object</h1>
+<table class="table table-bordered" >
+    <tbody>
+        <tr>  <td> ID</td> <td>{{pro.id}}</td> </tr>
+        <tr><td> Name</td> <td>{{pro.name}}</td></tr>
+        <tr><td> Cost</td> <td>{{pro.cost}}</td> </tr>
+        <tr><td> Category</td> <td>{{pro.category}}</td></tr>
+    </tbody>
+</table>
+
+<h1 >Display data using Interpolation 
+    From Array Of Object</h1>
+<table class="table table-bordered">
+     <thead><tr><th> Name</th><th>Cost</th> <th>Category</th>
+         </tr>
+     </thead>
+     <tbody >
+         <tr *ngFor="let pro of products">
+             <td>{{pro.name}}</td>
+             <td>{{pro.cost}}</td>
+             <td>{{pro.category}}</td>
+         </tr>
+           
+     </tbody>
+</table>
+<button class="btn btn-success" (click)="myFunction()">Click Me</button>&nbsp;&nbsp;
+<button class="btn btn-danger" (click)="deleteProduct(100)">Delete</button>&nbsp;&nbsp;
+<button class="btn btn-info" (click)="editProduct(100,'Note2')">Edit</button>
+
